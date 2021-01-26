@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data</a></p>
+    </div>
+
+    <div class = "container">
+    <div class="row">
+      <div class="col-md-10">
+      <b style="font-size:30px">Latest Mars News:</b>
+      <p style="font-size:20px"> {{mars.News_title}}</p>
+      <p style="font-size:20px"> {{mars.News_p}}</p>
+      </div>
+    </div>
+    
+    
+    <div>
+      <div class = "row">
+      <div class ="col-md-4">
+        <b style="font-size:30px">Feature Image:</b>
+        <div class = "image">
+            <div class = "row">
+                <div class ="col-md-6">
+                  <a>
+                  <img src={{mars.feature_image_url}} alt = "... " style = "width:500px;height:500px" hspace =20 vspace = 20 >
+                  </a>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    <!-- </div> -->
+    
+    <!-- <div class = "row"> -->
+    <div class ="col-md-4">
+      <b style="font-size:30px">Current Weather:</b>
+      <h3 style="font-size:20px"> {{mars.mars_weather}}</h3>
+    </div>
+    </div>
+
+    <!-- <div class="row"> -->
+      <div class="col-md-4">
+      <b style="font-size:30px">Mars Facts</b>
+      <h3 style="font-size:15px"> {{ mars.mars_facts_table | safe }}</h3>
+      </div>
+    <!-- </div> -->
+    </div>
+
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-8">
+          <b  style="font-size:30px"> Mars Hemispheres </b>
+      
+      {% for item in mars.hemispheres_image_url %}
+      <div class="col-lg-12">
+          <div class="card" style="width: 50rem;">
+              <div class="card-body">
+                <h4 class="card-title" style="font-size:20px">{{ item.title }}</h4>
+                <img src={{item.img_url}} alt = "... " style = "width:400px;height:400px" hspace =20 vspace = 20 >
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
